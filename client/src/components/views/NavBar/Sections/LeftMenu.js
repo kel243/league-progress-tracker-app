@@ -10,16 +10,6 @@ function LeftMenu(props) {
           Home
         </a>
       </Menu.Item>
-      <Menu.Item key="favorite">
-        <a class="nav-links" href="/favorite">
-          Favorites
-        </a>
-      </Menu.Item>
-      <Menu.Item key="search">
-        <a class="nav-links" href="/search">
-          Search
-        </a>
-      </Menu.Item>
     </Menu>
   );
 }
