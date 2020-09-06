@@ -41,7 +41,7 @@ app.use((req, res, next) => {
 
 app.use("/api/users", require("./routes/users"));
 app.use("/api/match", require("./routes/match"));
-
+app.use("/api/account", require("./routes/account"));
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
   // Set static folder
