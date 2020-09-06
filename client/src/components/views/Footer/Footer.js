@@ -14,7 +14,7 @@ function Footer() {
         color: "white",
       }}
     >
-      <p>Movie App</p>
+      <p>LoL Progress Tracker</p>
     </div>
   );
 }
