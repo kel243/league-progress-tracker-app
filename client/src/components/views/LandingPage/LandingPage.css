@@ -1,0 +1,26 @@
+.landing-page {
+  text-align: center;
+}
+
+.landing-heading {
+  font-size: 50px;
+  margin-top: 50px;
+  color: white;
+}
+
+.landing-btn {
+  display: block;
+  margin: 20px auto;
+  border: 1px solid rgb(240, 0, 148);
+  color: white;
+  font-size: 25px;
+  padding: 5px 0;
+  border-radius: 5px;
+  width: 250px;
+  transition: all 0.2s ease;
+}
+
+.landing-btn:hover {
+  color: white;
+  background-color: rgb(240, 0, 148);
+}
