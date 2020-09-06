@@ -3,9 +3,9 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const matchSchema = mongoose.Schema({
-  playerName: {
+  accountId: {
     type: Schema.Types.ObjectId,
-    ref: "User",
+    ref: "Account",
   },
   result: {
     type: String,
