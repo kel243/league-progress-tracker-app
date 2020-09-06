@@ -19,8 +19,8 @@ function App() {
       <div
         style={{
           paddingTop: "69px",
-          minHeight: "calc(100vh - 80px)",
-          backgroundColor: "#141526",
+          height: "calc(100vh - 70px)",
+          backgroundColor: "#17172E",
         }}
       >
         <Switch>
