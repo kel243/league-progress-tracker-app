@@ -2,10 +2,9 @@
 
 .menu {
   padding: 0 20px;
-  border-bottom: solid 1px #e8e8e8;
+  border-bottom: solid 1px rgba(255, 119, 203, 0.404);
   overflow: auto;
-  box-shadow: 0 0 30px #f3f1f1;
-  background-color: #141526;
+  background-color: #17172e;
 }
 
 .menu__logo {
@@ -97,12 +96,13 @@
 .menu_left li,
 .menu_right li {
   background-color: #141526 !important;
+  border-bottom: none !important;
 }
 
 .menu_left li:hover,
 .menu_right li:hover {
   background-color: #141526 !important;
-  border-bottom: 2px solid #6afff3 !important;
+  border-bottom: none !important;
 }
 
 @media (max-width: 767px) {
@@ -136,5 +136,5 @@
 }
 
 .nav-links:hover {
-  color: #6afff3 !important;
+  color: rgb(240, 0, 148) !important;
 }

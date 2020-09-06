@@ -20,13 +20,8 @@ function NavBar() {
   return (
     <nav
       className="menu"
-      style={{ position: "fixed", zIndex: 5, width: "100%" }}
+      style={{ position: "fixed", zIndex: 5, width: "100%", height: "70px" }}
     >
-      <div className="menu__logo">
-        <a href="/">
-          <img src={Logo} alt="Logo" style={{ width: "30%" }} />
-        </a>
-      </div>
       <div className="menu__container">
         <div className="menu_left">
           <LeftMenu mode="horizontal" />

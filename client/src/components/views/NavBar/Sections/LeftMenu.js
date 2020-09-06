@@ -6,7 +6,7 @@ function LeftMenu(props) {
   return (
     <Menu mode={props.mode}>
       <Menu.Item key="mail">
-        <a class="nav-links" href="/">
+        <a className="nav-links" href="/">
           Home
         </a>
       </Menu.Item>
