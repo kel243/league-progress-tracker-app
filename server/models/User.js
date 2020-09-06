@@ -7,7 +7,10 @@ const moment = require("moment");
 const userSchema = mongoose.Schema({
   name: {
     type: String,
-    maxlength: 50,
+    maxlength: 20,
+    unique: true,
+    dropDups: true,
+    required: true,
   },
   password: {
     type: String,
