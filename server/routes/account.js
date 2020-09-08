@@ -10,7 +10,7 @@ const { auth } = require("../middleware/auth");
 
 router.post("/", auth, (req, res) => {
   const account = new Account({
-    userId: req.body.id,
+    userId: req.user._id,
     accountName: req.body.accountName,
   });
 
@@ -18,17 +18,27 @@ router.post("/", auth, (req, res) => {
     .save()
     .then((result) => {
       console.log("Account Created!");
-      res.status(200).json({ success: true });
+      res.status(200).json({ success: true, id: result._id });
     })
     .catch((err) => console.log(err));
 });
 
-router.get("/", auth, (req, res) => {
-  Account.find({ userId: req.body.userId })
+router.get("/all", auth, (req, res) => {
+  Account.find({ userId: req.user._id })
     .then((result) => {
       res.status(200).json({ success: true, accounts: result });
     })
     .catch((err) => console.log(err));
+});
+
+router.get("/:accountId", auth, (req, res) => {
+  Account.findById(req.params.accountId)
+    .then((result) => {
+      res.status(200).json({ success: true, userId: result.userId });
+    })
+    .catch((err) => {
+      res.status(200).json({ success: false });
+    });
 });
 
 module.exports = router;
