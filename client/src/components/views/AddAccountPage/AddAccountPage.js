@@ -28,7 +28,7 @@ function AddAccountPage() {
   return (
     <div className="landing-page landing-page-loggedIn">
       <div className="landing-sidebar">
-        <Sidebar />
+        <Sidebar active="add" />
       </div>
       <div className="landing-content">
         <form onSubmit={onSubmitHandler} className="account-form">
