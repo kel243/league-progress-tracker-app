@@ -1,0 +1,35 @@
+.account-form {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+}
+
+.account-form label {
+  color: white;
+  font-size: 23px;
+}
+
+.account-form input {
+  margin: 10px auto;
+  width: 300px;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  padding: 3px;
+}
+
+.account-form button {
+  margin: 10px auto;
+  width: 100px;
+  font-size: 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  background: #3282b8;
+  transition: all 0.2s ease;
+}
+
+.account-form button:hover {
+  background: #518fb9;
+}
