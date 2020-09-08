@@ -1,20 +1,20 @@
 import React, { useState } from "react";
 import Axios from "axios";
 import Sidebar from "../LandingPage/Sections/Sidebar/Sidebar";
+import { withRouter } from "react-router-dom";
 import "../LandingPage/LandingPage.css";
 import "./AddAccountPage.css";
 
-function AddAccountPage() {
+function AddAccountPage(props) {
   const [name, setName] = useState("");
-  const [id, setId] = useState(localStorage.getItem("userId"));
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
     Axios.post("/api/account", {
       accountName: name,
-      userId: id,
     }).then((response) => {
       if (response.data.success) {
+        props.history.push(`/account/${response.data.id}`);
       } else {
         alert("Failed to get create new account");
       }
@@ -32,7 +32,7 @@ function AddAccountPage() {
       </div>
       <div className="landing-content">
         <form onSubmit={onSubmitHandler} className="account-form">
-          <label for="accountName">Account Name</label>
+          <label htmlFor="accountName">Account Name</label>
           <input
             type="text"
             name="accountName"
@@ -53,4 +53,4 @@ function AddAccountPage() {
   );
 }
 
-export default AddAccountPage;
+export default withRouter(AddAccountPage);
