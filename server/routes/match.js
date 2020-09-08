@@ -5,7 +5,7 @@ const { Match } = require("../models/Match");
 const { auth } = require("../middleware/auth");
 
 //=================================
-//             Favorite
+//             Match
 //=================================
 
 module.exports = router;

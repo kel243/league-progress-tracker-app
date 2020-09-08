@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "./LandingPage.css";
+import Sidebar from "./Sections/Sidebar/Sidebar";
 
 function LandingPage() {
   const user = useSelector((state) => state.user);
@@ -19,10 +20,13 @@ function LandingPage() {
     );
   } else {
     return (
-      <div className="landing-page">
-        <a className="landing-btn" href="/login">
-          Add New Account
-        </a>
+      <div className="landing-page landing-page-loggedIn">
+        <div className="landing-sidebar">
+          <Sidebar />
+        </div>
+        <div className="landing-content">
+          <h1 className="landing-heading">Choose/Add Account</h1>
+        </div>
       </div>
     );
   }
