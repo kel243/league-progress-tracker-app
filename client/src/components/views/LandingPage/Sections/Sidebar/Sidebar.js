@@ -6,7 +6,7 @@ function Sidebar(props) {
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
-    Axios.get("/api/account/all").then((response) => {
+    Axios.get("/api/account").then((response) => {
       if (response.data.success) {
         setAccounts(response.data.accounts);
       } else {
@@ -17,14 +17,19 @@ function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <a href="/add-account" className="add-account-btn">
+      <a
+        href="/add-account"
+        className={`add-account-btn ${
+          props.active == "add" ? "add-account-btn-active" : ""
+        }`}
+      >
         + New Account
       </a>
       {accounts.map((account, index) => {
         return (
           <a
             href={`/account/${account._id}`}
-            className={`add-account-btn ${
+            className={`add-account-btn add-account-btn-acc ${
               props.active == account._id ? "add-account-btn-active" : ""
             }`}
             key={index}
