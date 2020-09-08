@@ -4,13 +4,13 @@ function Footer() {
   return (
     <div
       style={{
-        height: "80px",
+        height: "70px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         fontSize: "1rem",
-        backgroundColor: "#000000",
+        backgroundColor: "#141c20",
         color: "white",
       }}
     >
