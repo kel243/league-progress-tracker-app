@@ -6,7 +6,7 @@ function Sidebar(props) {
   const [accounts, setAccounts] = useState([]);
 
   useEffect(() => {
-    Axios.get("/api/account").then((response) => {
+    Axios.get("/api/account/all").then((response) => {
       if (response.data.success) {
         setAccounts(response.data.accounts);
       } else {
