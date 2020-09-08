@@ -1,10 +1,10 @@
 @import "~antd/dist/antd.css";
 
 .menu {
-  padding: 0 20px;
-  border-bottom: solid 1px rgba(255, 119, 203, 0.404);
-  overflow: auto;
-  background-color: #17172e;
+  padding: 2px 20px;
+  border-bottom: solid 1px rgba(255, 255, 255, 0.404);
+  background-color: #1b262c;
+  height: 69px;
 }
 
 .menu__logo {
@@ -20,10 +20,7 @@
 
 .menu__container .ant-menu-item {
   padding: 0px 5px;
-}
-
-.menu__container .ant-menu-submenu-title {
-  padding: 10px 20px;
+  height: 65px;
 }
 
 .menu__container .ant-menu-item a,
@@ -44,35 +41,36 @@
 }
 
 .menu__container button {
-  background-color: #141526;
-  border: 1px solid #6afff3;
+  background-color: #1b262c;
+  border: none;
 }
 
 .menu__container button:hover {
-  background-color: #141526;
-  border: 1px solid #3e91f7;
+  background-color: #1b262c;
 }
 
 .menu__container svg {
-  fill: #6afff3;
+  fill: #bbe1fa;
+  height: 32px;
+  width: 32px;
 }
 
 .menu__container svg:hover {
-  fill: #3e91f7;
+  fill: #3282b8;
 }
 
 .menu__mobile-button {
   float: right;
-  height: 32px;
+  height: 50px;
   padding: 6px;
   margin-top: 8px;
   display: none !important; /* use of important to overwrite ant-btn */
-  background: #3e91f7;
+  background: #3282b8;
 }
 
 .menu_drawer ul,
 .menu_drawer div div {
-  background-color: #141526;
+  background-color: #1b262c;
 }
 
 .menu_drawer ul {
@@ -90,18 +88,18 @@
 
 .menu_left,
 .menu_right {
-  background-color: #141526;
+  background-color: #1b262c;
 }
 
 .menu_left li,
 .menu_right li {
-  background-color: #141526 !important;
+  background-color: #1b262c !important;
   border-bottom: none !important;
 }
 
 .menu_left li:hover,
 .menu_right li:hover {
-  background-color: #141526 !important;
+  background-color: #1b262c !important;
   border-bottom: none !important;
 }
 
@@ -131,10 +129,10 @@
 
 .nav-links {
   font-size: 20px;
-  background-color: #141526;
+  background-color: #1b262c;
   color: white !important;
 }
 
 .nav-links:hover {
-  color: rgb(240, 0, 148) !important;
+  color: #3282b8 !important;
 }
