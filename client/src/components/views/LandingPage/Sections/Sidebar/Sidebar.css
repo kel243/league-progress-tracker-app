@@ -1,7 +1,9 @@
 .sidebar {
-  background-color: #eeeeee1c;
+  background-color: #323c41;
   height: 100%;
-  width: 100%;
+  width: 200px;
+  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
 .add-account-btn {
@@ -24,4 +26,18 @@
 
 .add-account-btn-active {
   border-right: 5px solid #3282b8;
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    width: 20px;
+    position: fixed;
+    left: 0;
+    top: 69px;
+    z-index: 100;
+  }
+}
+
+.extended {
+  width: 200px;
 }

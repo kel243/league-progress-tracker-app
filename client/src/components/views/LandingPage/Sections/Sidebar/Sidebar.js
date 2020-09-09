@@ -1,9 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Axios from "axios";
 import "./Sidebar.css";
 
 function Sidebar(props) {
   const [accounts, setAccounts] = useState([]);
+  const sbRef = useRef(null);
+
+  const onClickHandler = () => {
+    sbRef.current.classList.toggle("extended");
+  };
 
   useEffect(() => {
     Axios.get("/api/account/all").then((response) => {
@@ -16,11 +21,11 @@ function Sidebar(props) {
   }, []);
 
   return (
-    <div className="sidebar">
+    <div className="sidebar" ref={sbRef} onClick={onClickHandler}>
       <a
         href="/add-account"
         className={`add-account-btn ${
-          props.active == "add" ? "add-account-btn-active" : ""
+          props.active === "add" ? "add-account-btn-active" : ""
         }`}
       >
         + New Account
@@ -30,7 +35,7 @@ function Sidebar(props) {
           <a
             href={`/account/${account._id}`}
             className={`add-account-btn add-account-btn-acc ${
-              props.active == account._id ? "add-account-btn-active" : ""
+              props.active === account._id ? "add-account-btn-active" : ""
             }`}
             key={index}
           >
