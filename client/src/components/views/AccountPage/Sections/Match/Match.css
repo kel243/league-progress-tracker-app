@@ -54,6 +54,7 @@
 .match-text {
   color: white;
   display: inline-block;
+  margin: 0;
 }
 
 .promos,
