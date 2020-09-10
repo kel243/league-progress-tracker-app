@@ -41,7 +41,7 @@ function AccountPage(props) {
     if (accountFound) {
       return (
         <div className="account-main">
-          <AccountInfo />
+          <AccountInfo accountId={props.match.params.accountId} />
           <div className="account-matches">
             <MatchForm
               accountId={props.match.params.accountId}
