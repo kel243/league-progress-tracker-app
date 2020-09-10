@@ -6,6 +6,13 @@ import "./AccountPage.css";
 
 function AccountPage(props) {
   const [accountFound, setAccountFound] = useState(true);
+  const [result, setResult] = useState("Victory");
+  const [champion, setChampion] = useState("Aatrox");
+  const [opponent, setOpponent] = useState("Aatrox");
+  const [lane, setLane] = useState("Top");
+  const [lp, setLp] = useState(0);
+  const [promo, setPromo] = useState(true);
+  const [notes, setNotes] = useState("");
   const formRef = useRef(null);
   const btnRef = useRef(null);
   const xRef = useRef(null);
@@ -30,8 +37,52 @@ function AccountPage(props) {
     btnRef.current.classList.toggle("invisible");
   };
 
+  function handleResultChange(e) {
+    setResult(e.target.value);
+  }
+
+  function handleChampionChange(e) {
+    setChampion(e.target.value);
+  }
+
+  function handleOpponentChange(e) {
+    setOpponent(e.target.value);
+  }
+
+  function handleLaneChange(e) {
+    setLane(e.target.value);
+  }
+
+  function handleLPChange(e) {
+    setLp(e.target.value);
+  }
+
+  function handlePromosChange(e) {
+    setPromo(e.target.value);
+  }
+
+  function handleNotesChange(e) {
+    setNotes(e.target.value);
+  }
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
+    Axios.post("/api/match", {
+      accountId: props.match.params.accountId,
+      result: result,
+      champion: champion,
+      opponent: opponent,
+      lane: lane,
+      lp: lp,
+      notes: notes,
+      promo: promo,
+    }).then((response) => {
+      if (response.data.success) {
+        props.history.push(`/account/${props.match.params.accountId}`);
+      } else {
+        alert("Failed to get create new match");
+      }
+    });
   };
 
   const content = () => {
@@ -79,7 +130,13 @@ function AccountPage(props) {
               >
                 <label className="account-label" htmlFor="result">
                   Result
-                  <select className="account-input" name="result" id="result">
+                  <select
+                    className="account-input"
+                    value={result}
+                    name="result"
+                    id="result"
+                    onChange={handleResultChange}
+                  >
                     <option value="Victory" selected>
                       Victory
                     </option>
@@ -91,8 +148,10 @@ function AccountPage(props) {
                   Champion
                   <select
                     className="account-input"
+                    value={champion}
                     name="champion"
                     id="champion"
+                    onChange={handleChampionChange}
                   >
                     <option value="Aatrox" selected>
                       Aatrox
@@ -111,7 +170,9 @@ function AccountPage(props) {
                   <select
                     className="account-input"
                     name="opponent"
+                    value={opponent}
                     id="opponent"
+                    onChange={handleOpponentChange}
                   >
                     <option value="Aatrox" selected>
                       Aatrox
@@ -127,7 +188,13 @@ function AccountPage(props) {
 
                 <label className="account-label" htmlFor="lane">
                   Lane
-                  <select className="account-input" name="lane" id="lane">
+                  <select
+                    className="account-input"
+                    name="lane"
+                    value={lane}
+                    id="lane"
+                    onChange={handleLaneChange}
+                  >
                     <option value="Top" selected>
                       Top
                     </option>
@@ -145,12 +212,20 @@ function AccountPage(props) {
                     type="number"
                     name="lp"
                     id="lp"
+                    value={lp}
+                    onChange={handleLPChange}
                   ></input>
                 </label>
 
                 <label className="account-label" htmlFor="promo">
                   Promos
-                  <select className="account-input" name="promo" id="promo">
+                  <select
+                    className="account-input"
+                    name="promo"
+                    id="promo"
+                    value={promo}
+                    onChange={handlePromosChange}
+                  >
                     <option value="True" selected>
                       True
                     </option>
@@ -164,12 +239,19 @@ function AccountPage(props) {
                   >
                     Notes
                   </label>
-                  <textarea name="notes" id="notes"></textarea>
+                  <textarea
+                    name="notes"
+                    id="notes"
+                    value={notes}
+                    onChange={handleNotesChange}
+                  ></textarea>
+                </div>
+                <div style={{ width: "100%" }}>
+                  <button type="submit" className="account-add-match">
+                    Create Match
+                  </button>
                 </div>
               </form>
-              <button type="submit" className="account-add-match">
-                Create Match
-              </button>
             </div>
           </div>
         </div>
