@@ -57,6 +57,13 @@
   margin: 0;
 }
 
+.match-text-date {
+  font-size: 13px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
 .promos,
 .not-promos {
   font-weight: bold;
