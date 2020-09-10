@@ -30,14 +30,16 @@
 
 @media (max-width: 767px) {
   .sidebar {
-    width: 20px;
+    width: 0px;
     position: fixed;
     left: 0;
     top: 69px;
     z-index: 100;
+    padding-right: 20px;
   }
 }
 
 .extended {
   width: 200px;
+  padding-right: 0;
 }

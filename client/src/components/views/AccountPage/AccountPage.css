@@ -4,6 +4,7 @@
   overflow: auto;
   height: 100%;
   width: 100%;
+  justify-content: space-evenly;
 }
 
 .account-info {
@@ -34,4 +35,85 @@
 
 .account-add-match {
   margin: 0 auto;
+  border: none;
+  background-color: #3282b8;
+  cursor: pointer;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.invisible {
+  display: none;
+}
+
+.account-add-match-box {
+  background-color: #323c41;
+  padding: 25px 20px;
+  width: 100%;
+  min-width: 300px;
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.account-add-match-form {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.account-add-match-form textarea,
+.account-add-match-form input,
+.account-add-match-form select {
+  color: black;
+  padding: 0 5px;
+}
+
+.account-add-match-form textarea {
+  width: 250px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.account-label {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 10px;
+  width: 250px;
+  text-align: right;
+}
+
+.account-label-notes {
+  display: block;
+  text-align: center;
+  margin-bottom: 0px;
+}
+
+.account-input {
+  border: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  width: 100px;
+}
+
+.account-notes {
+  margin: 0 auto 10px auto;
+}
+
+.account-form-close {
+  color: white;
+  position: absolute;
+  top: -5px;
+  right: 8px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.account-form-close:hover {
+  color: #3282b8;
 }
