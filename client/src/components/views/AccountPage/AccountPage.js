@@ -577,6 +577,7 @@ function AccountPage(props) {
                     lp={match.lpChange}
                     promo={match.promo}
                     notes={match.notes}
+                    date={match.date}
                     key={`match-${index}`}
                   />
                 );
