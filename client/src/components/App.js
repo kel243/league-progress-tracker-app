@@ -7,7 +7,6 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import AddAccountPage from "./views/AddAccountPage/AddAccountPage.js";
 import NavBar from "./views/NavBar/NavBar";
-import Footer from "./views/Footer/Footer";
 import AccountPage from "./views/AccountPage/AccountPage";
 
 //null   Anyone Can go inside
