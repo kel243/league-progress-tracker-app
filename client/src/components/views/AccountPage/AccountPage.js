@@ -3,9 +3,11 @@ import Axios from "axios";
 import Sidebar from "../LandingPage/Sections/Sidebar/Sidebar";
 import "../LandingPage/LandingPage.css";
 import "./AccountPage.css";
+import Match from "./Sections/Match/Match";
 
 function AccountPage(props) {
   const [accountFound, setAccountFound] = useState(true);
+  const [matches, setMatches] = useState([]);
   const [result, setResult] = useState("Victory");
   const [champion, setChampion] = useState("Aatrox");
   const [opponent, setOpponent] = useState("Aatrox");
@@ -20,7 +22,6 @@ function AccountPage(props) {
   useEffect(() => {
     Axios.get(`/api/account/${props.match.params.accountId}`).then(
       (response) => {
-        console.log(response.data.success);
         if (response.data.success) {
           if (response.data.userId !== localStorage.getItem("userId")) {
             setAccountFound(false);
@@ -30,6 +31,14 @@ function AccountPage(props) {
         }
       }
     );
+  }, []);
+
+  useEffect(() => {
+    Axios.get(`/api/match/${props.match.params.accountId}`).then((response) => {
+      if (response.data.success) {
+        setMatches(response.data.matches);
+      }
+    });
   }, []);
 
   const onClickHandler = () => {
@@ -65,10 +74,20 @@ function AccountPage(props) {
     setNotes(e.target.value);
   }
 
+  const resetForm = () => {
+    setResult("Victory");
+    setChampion("Aatrox");
+    setOpponent("Aatrox");
+    setLane("Top");
+    setLp(0);
+    setPromo(true);
+    setNotes("");
+  };
+
   const onSubmitHandler = (e) => {
     e.preventDefault();
     Axios.post("/api/match", {
-      accountId: props.match.params.accountId,
+      id: props.match.params.accountId,
       result: result,
       champion: champion,
       opponent: opponent,
@@ -78,7 +97,16 @@ function AccountPage(props) {
       promo: promo,
     }).then((response) => {
       if (response.data.success) {
-        props.history.push(`/account/${props.match.params.accountId}`);
+        formRef.current.classList.toggle("invisible");
+        btnRef.current.classList.toggle("invisible");
+        resetForm();
+        Axios.get(`/api/match/${props.match.params.accountId}`).then(
+          (response) => {
+            if (response.data.success) {
+              setMatches(response.data.matches);
+            }
+          }
+        );
       } else {
         alert("Failed to get create new match");
       }
@@ -226,10 +254,10 @@ function AccountPage(props) {
                     value={promo}
                     onChange={handlePromosChange}
                   >
-                    <option value="True" selected>
+                    <option value="true" selected>
                       True
                     </option>
-                    <option value="False">False</option>
+                    <option value="false">False</option>
                   </select>
                 </label>
                 <div className="account-notes">
@@ -252,6 +280,22 @@ function AccountPage(props) {
                   </button>
                 </div>
               </form>
+            </div>
+            <div className="account-matches-box">
+              {matches.map((match, index) => {
+                return (
+                  <Match
+                    result={match.result}
+                    champion={match.champion}
+                    opponent={match.opponent}
+                    lane={match.lane}
+                    lp={match.lpChange}
+                    promo={match.promo}
+                    notes={match.notes}
+                    key={`match-${index}`}
+                  />
+                );
+              })}
             </div>
           </div>
         </div>

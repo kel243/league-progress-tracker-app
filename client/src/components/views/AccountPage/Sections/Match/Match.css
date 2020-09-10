@@ -1,0 +1,111 @@
+.match {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.match-box {
+  background-color: #293a44;
+  display: flex;
+  border-radius: 2px;
+  height: 100px;
+  font-size: 18px;
+  position: relative;
+  cursor: pointer;
+}
+
+.match-result {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  width: 25%;
+  height: 100%;
+
+  transform: skew(-50deg);
+}
+
+.match-result-victory {
+  background-color: rgb(0, 196, 0);
+}
+
+.match-result-defeat {
+  background-color: red;
+}
+
+.match-champion {
+  width: 75px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.match-opponent {
+  width: 45px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+}
+
+.match-text {
+  color: white;
+  display: inline-block;
+}
+
+.promos,
+.not-promos {
+  font-weight: bold;
+  position: absolute;
+  top: 0px;
+  left: 3px;
+}
+
+.promos {
+  color: gold;
+}
+
+.not-promos {
+  color: grey;
+}
+
+.match-champion-imgs {
+  width: 33%;
+  position: relative;
+}
+
+.match-info {
+  width: 50%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.lp-positive {
+  color: rgb(0, 196, 0);
+}
+
+.lp-negative {
+  color: red;
+}
+
+.match-notes {
+  height: 0;
+  background-color: #1a3342;
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.match-notes-expanded {
+  height: auto;
+  padding: 10px;
+}
+
+.match-text-notes {
+  text-align: left;
+  font-size: 16px;
+  width: 100%;
+}

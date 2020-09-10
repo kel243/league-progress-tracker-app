@@ -1,4 +1,5 @@
 const express = require("express");
+const { ObjectId } = require("mongodb");
 const router = express.Router();
 const { Match } = require("../models/Match");
 
@@ -29,10 +30,11 @@ router.post("/", auth, (req, res) => {
     .catch((err) => console.log(err));
 });
 
-router.get("/", auth, (req, res) => {
-  Match.find({ accountId: req.body.accountId })
+router.get("/:accountId", auth, (req, res) => {
+  Match.find({ accountId: req.params.accountId })
+    .sort({ date: -1 })
     .then((result) => {
-      res.status(200).json({ success: true, accounts: result });
+      res.status(200).json({ success: true, matches: result });
     })
     .catch((err) => console.log(err));
 });
