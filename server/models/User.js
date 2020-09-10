@@ -10,7 +10,6 @@ const userSchema = mongoose.Schema({
     maxlength: 20,
     unique: true,
     dropDups: true,
-    required: true,
   },
   password: {
     type: String,
@@ -28,7 +27,6 @@ userSchema.pre("save", function (next) {
   var user = this;
 
   if (user.isModified("password")) {
-    // console.log('password changed')
     bcrypt.genSalt(saltRounds, function (err, salt) {
       if (err) return next(err);
 
