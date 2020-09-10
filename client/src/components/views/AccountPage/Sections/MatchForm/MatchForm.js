@@ -50,9 +50,7 @@ function MatchForm(props) {
   const championList = () => {
     return (
       <React.Fragment>
-        <option value="Aatrox" selected>
-          Aatrox
-        </option>
+        <option value="Aatrox">Aatrox</option>
         <option value="Ahri">Ahri</option>
         <option value="Akali">Akali</option>
         <option value="Alistar">Alistar</option>
@@ -269,9 +267,7 @@ function MatchForm(props) {
               id="result"
               onChange={handleResultChange}
             >
-              <option value="Victory" selected>
-                Victory
-              </option>
+              <option value="Victory">Victory</option>
               <option value="Defeat">Defeat</option>
             </select>
           </label>
@@ -311,9 +307,7 @@ function MatchForm(props) {
               id="lane"
               onChange={handleLaneChange}
             >
-              <option value="Top" selected>
-                Top
-              </option>
+              <option value="Top">Top</option>
               <option value="Jungle">Jungle</option>
               <option value="Mid">Mid</option>
               <option value="ADC">ADC</option>
@@ -342,9 +336,7 @@ function MatchForm(props) {
               value={promo}
               onChange={handlePromosChange}
             >
-              <option value="true" selected>
-                True
-              </option>
+              <option value="true">True</option>
               <option value="false">False</option>
             </select>
           </label>
