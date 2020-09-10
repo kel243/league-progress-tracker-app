@@ -21,7 +21,7 @@ function App() {
       <div
         style={{
           paddingTop: "69px",
-          height: "calc(100vh - 70px)",
+          height: "100vh",
           backgroundColor: "#1b262c",
         }}
       >
@@ -41,7 +41,6 @@ function App() {
           />
         </Switch>
       </div>
-      <Footer />
     </Suspense>
   );
 }
