@@ -11,15 +11,11 @@ function Sidebar(props) {
   };
 
   useEffect(() => {
-    if (props.user.userData && props.user.userData.isAuth) {
-      Axios.get("/api/account/all").then((response) => {
-        if (response.data.success) {
-          setAccounts(response.data.accounts);
-        } else {
-          alert("Failed to get accounts");
-        }
-      });
-    }
+    Axios.get("/api/account/all").then((response) => {
+      if (response.data.success) {
+        setAccounts(response.data.accounts);
+      }
+    });
   }, []);
 
   return (

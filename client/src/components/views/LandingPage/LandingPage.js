@@ -22,7 +22,7 @@ function LandingPage() {
     return (
       <div className="landing-page landing-page-loggedIn">
         <div className="landing-sidebar">
-          <Sidebar user={user} />
+          <Sidebar />
         </div>
         <div className="landing-content">
           <h1 className="landing-heading">Choose/Add Account</h1>
