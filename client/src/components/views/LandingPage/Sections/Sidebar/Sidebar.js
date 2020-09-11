@@ -11,7 +11,7 @@ function Sidebar(props) {
   };
 
   useEffect(() => {
-    if (props.user.userData && user.userData.isAuth) {
+    if (props.user.userData && props.user.userData.isAuth) {
       Axios.get("/api/account/all").then((response) => {
         if (response.data.success) {
           setAccounts(response.data.accounts);
