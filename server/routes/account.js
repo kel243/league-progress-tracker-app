@@ -109,11 +109,11 @@ router.get("/info/lanes/:accountId", auth, (req, res) => {
 
                       res.status(200).json({
                         success: true,
-                        topWR,
-                        jungleWR,
-                        midWR,
-                        adcWR,
-                        supportWR,
+                        topWR: topWR.toFixed(2),
+                        jungleWR: jungleWR.toFixed(2),
+                        midWR: midWR.toFixed(2),
+                        adcWR: adcWR.toFixed(2),
+                        supportWR: supportWR.toFixed(2),
                       });
                     })
                     .catch((err) => console.log(err));
