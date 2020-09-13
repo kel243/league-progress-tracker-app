@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { withRouter } from "react-router-dom";
 import Axios from "axios";
+import DeleteConfirm from "../../../Modals/DeleteConfirm";
 
 function AccountInfo(props) {
   const [todayWL, setTodayWL] = useState(0);
@@ -14,10 +16,11 @@ function AccountInfo(props) {
   const [adcWR, setAdcWR] = useState(0);
   const [supportWR, setSupportWR] = useState(0);
 
+  const modalRef = useRef(null);
+
   useEffect(() => {
     Axios.get(`/api/account/info/progress/${props.accountId}`).then(
       (response) => {
-        console.log(response);
         if (response.data.success) {
           setTodayWL(response.data.todayWL);
           setTodayLP(response.data.todayLP);
@@ -30,7 +33,6 @@ function AccountInfo(props) {
     );
 
     Axios.get(`/api/account/info/lanes/${props.accountId}`).then((response) => {
-      console.log(response);
       if (response.data.success) {
         setTopWR(response.data.topWR);
         setJungleWR(response.data.jungleWR);
@@ -39,10 +41,22 @@ function AccountInfo(props) {
         setSupportWR(response.data.supportWR);
       }
     });
-  }, []);
+  }, [props.matches]);
+
+  const onClickDeleteHandler = () => {
+    modalRef.current.style.display = "block";
+  };
 
   return (
     <div className="account-info">
+      <div style={{ display: "none" }} ref={modalRef}>
+        <DeleteConfirm
+          accountId={props.accountId}
+          mode="account"
+          modalRef={modalRef}
+        />
+      </div>
+
       <div className="account-info-record">
         <p className="account-info-text">W/L Diff (24 hrs): {todayWL}</p>
         <p className="account-info-text">W/L Diff (7 days): {weekWL}</p>
@@ -60,8 +74,11 @@ function AccountInfo(props) {
         <p className="account-info-text">ADC Win Rate: {adcWR}%</p>
         <p className="account-info-text">Support Win Rate: {supportWR}%</p>
       </div>
+      <div className="account-btn-box" onClick={onClickDeleteHandler}>
+        <button className="account-delete-btn">Delete</button>
+      </div>
     </div>
   );
 }
 
-export default AccountInfo;
+export default withRouter(AccountInfo);
