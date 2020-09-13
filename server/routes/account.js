@@ -54,6 +54,26 @@ router.get("/:accountId", auth, (req, res) => {
     });
 });
 
+router.patch("/:accountId", auth, (req, res) => {
+  const newName = req.body.name;
+
+  Account.findById(req.params.accountId)
+    .then((account) => {
+      account.accountName = newName;
+      account
+        .save()
+        .then((result) => {
+          res.status(200).json({ success: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
 router.get("/info/lanes/:accountId", auth, (req, res) => {
   let topWR = 0;
   let jungleWR = 0;

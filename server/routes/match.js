@@ -29,6 +29,34 @@ router.post("/", auth, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.patch("/:matchId", auth, (req, res) => {
+  const newResult = req.body.result;
+  const newChampion = req.body.champion;
+  const newOpponent = req.body.opponent;
+  const newLane = req.body.lane;
+  const newLpChange = req.body.lp;
+  const newNotes = req.body.notes;
+  const newPromo = req.body.promo;
+  Match.findById(req.params.matchId)
+    .then((match) => {
+      match.result = newResult;
+      match.champion = newChampion;
+      match.opponent = newOpponent;
+      match.lane = newLane;
+      match.lpChange = newLpChange;
+      match.notes = newNotes;
+      match.promo = newPromo;
+      match
+        .save()
+        .then((result) => {
+          console.log("Match updated!");
+          res.status(200).json({ success: true });
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+});
+
 router.delete("/:matchId", auth, (req, res) => {
   Match.findByIdAndDelete(req.params.matchId)
     .then((result) => {
