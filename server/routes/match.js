@@ -29,6 +29,14 @@ router.post("/", auth, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.delete("/:matchId", auth, (req, res) => {
+  Match.findByIdAndDelete(req.params.matchId)
+    .then((result) => {
+      res.status(200).json({ success: true });
+    })
+    .catch((err) => console.log(err));
+});
+
 router.get("/:accountId", auth, (req, res) => {
   Match.find({ accountId: req.params.accountId })
     .sort({ date: -1 })

@@ -24,6 +24,18 @@ router.post("/", auth, (req, res) => {
     .catch((err) => console.log(err));
 });
 
+router.delete("/:accountId", auth, (req, res) => {
+  Account.findByIdAndDelete(req.params.accountId)
+    .then((result) => {
+      Match.deleteMany({ accountId: req.params.accountId })
+        .then((result) => {
+          res.status(200).json({ success: true });
+        })
+        .catch((err) => console.log(err));
+    })
+    .catch((err) => console.log(err));
+});
+
 router.get("/all", auth, (req, res) => {
   Account.find({ userId: req.user._id })
     .then((result) => {
