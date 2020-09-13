@@ -11,12 +11,14 @@
   max-width: 400px;
   width: 20%;
   min-width: 300px;
-  height: 510px;
+  height: 600px;
   padding: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.363);
+  background-color: #1a3342;
   text-align: left;
   margin: 10px;
   border-radius: 3px;
+  display: flex;
+  flex-direction: column;
 }
 
 .account-info-record,
@@ -27,6 +29,20 @@
 .account-info-text {
   color: white;
   font-size: 16px;
+}
+
+.account-btn-box {
+  display: flex;
+  justify-content: center;
+}
+
+.account-delete-btn {
+  border: none;
+  background-color: red;
+  color: white;
+  padding: 3px 5px;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .account-matches {
