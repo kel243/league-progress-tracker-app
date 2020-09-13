@@ -16,6 +16,24 @@
   cursor: pointer;
 }
 
+.match-btn-box {
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.match-delete-btn {
+  border: none;
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+  font-size: 12px;
+  height: 23px;
+  padding: 3px;
+  cursor: pointer;
+}
+
 .match-result {
   position: absolute;
   top: 0;
