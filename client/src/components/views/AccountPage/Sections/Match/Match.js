@@ -1,8 +1,11 @@
 import React, { useRef } from "react";
+import Axios from "axios";
+import DeleteConfirm from "../../../Modals/DeleteConfirm";
 import "./Match.css";
 
 function Match(props) {
   const notesRef = useRef(null);
+  const modalRef = useRef(null);
 
   const months = [
     "Jan",
@@ -36,9 +39,22 @@ function Match(props) {
     notesRef.current.classList.toggle("match-notes-expanded");
   };
 
+  const onClickDeleteHandler = () => {
+    modalRef.current.style.display = "block";
+  };
+
   return (
-    <div className="match" onClick={onClickHandler}>
-      <div className="match-box">
+    <div className="match">
+      <div style={{ display: "none" }} ref={modalRef}>
+        <DeleteConfirm
+          accountId={props.accountId}
+          updateMatches={props.updateMatches}
+          matchId={props.matchId}
+          mode="match"
+          modalRef={modalRef}
+        />
+      </div>
+      <div className="match-box" onClick={onClickHandler}>
         <div
           className={`match-result ${
             props.result === "Victory"
@@ -67,6 +83,11 @@ function Match(props) {
           >
             {props.lp} LP
           </p>
+        </div>
+        <div className="match-btn-box">
+          <button className="match-delete-btn" onClick={onClickDeleteHandler}>
+            Delete
+          </button>
         </div>
         <p className={`match-text ${props.promo ? "promos" : "not-promos"}`}>
           P
