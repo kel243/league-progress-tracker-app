@@ -41,7 +41,10 @@ function AccountPage(props) {
     if (accountFound) {
       return (
         <div className="account-main">
-          <AccountInfo accountId={props.match.params.accountId} />
+          <AccountInfo
+            accountId={props.match.params.accountId}
+            matches={matches}
+          />
           <div className="account-matches">
             <MatchForm
               accountId={props.match.params.accountId}
@@ -51,6 +54,8 @@ function AccountPage(props) {
               {matches.map((match, index) => {
                 return (
                   <Match
+                    accountId={props.match.params.accountId}
+                    matchId={match._id}
                     result={match.result}
                     champion={match.champion}
                     opponent={match.opponent}
@@ -59,6 +64,7 @@ function AccountPage(props) {
                     promo={match.promo}
                     notes={match.notes}
                     date={match.date}
+                    updateMatches={updateMatches}
                     key={`match-${index}`}
                   />
                 );
