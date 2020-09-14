@@ -230,7 +230,7 @@ function MatchForm(props) {
         resetForm();
         Axios.get(`/api/match/${props.accountId}`).then((response) => {
           if (response.data.success) {
-            props.updateMatches(response.data.matches);
+            props.updateMatches();
           }
         });
       } else {
