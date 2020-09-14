@@ -72,7 +72,7 @@ function Match(props) {
           updateMatches={props.updateMatches}
           mode="match"
           modalRef={modalEditRef}
-          key={[props.matchId]}
+          key={props.matchId}
         />
       </div>
       <div className="match-box" onClick={onClickHandler}>
