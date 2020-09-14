@@ -47,7 +47,13 @@ router.get("/all", auth, (req, res) => {
 router.get("/:accountId", auth, (req, res) => {
   Account.findById(req.params.accountId)
     .then((result) => {
-      res.status(200).json({ success: true, userId: result.userId });
+      res
+        .status(200)
+        .json({
+          success: true,
+          userId: result.userId,
+          accountName: result.accountName,
+        });
     })
     .catch((err) => {
       res.status(200).json({ success: false });

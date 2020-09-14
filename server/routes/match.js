@@ -60,6 +60,7 @@ router.patch("/:matchId", auth, (req, res) => {
 router.delete("/:matchId", auth, (req, res) => {
   Match.findByIdAndDelete(req.params.matchId)
     .then((result) => {
+      console.log("Match deleted!");
       res.status(200).json({ success: true });
     })
     .catch((err) => console.log(err));
