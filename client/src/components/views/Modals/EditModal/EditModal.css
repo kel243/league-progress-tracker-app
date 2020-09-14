@@ -1,0 +1,20 @@
+.modal-edit-name-input {
+  border: none;
+  margin: 0 auto 20px auto;
+  width: 200px;
+  padding: 3px 5px;
+  border-radius: 2px;
+  color: black;
+}
+
+.modal-edit-match {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.modal-input {
+  color: black;
+}
