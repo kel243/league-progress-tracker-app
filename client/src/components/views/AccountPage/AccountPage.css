@@ -33,16 +33,25 @@
 
 .account-btn-box {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 }
 
-.account-delete-btn {
+.account-btn {
   border: none;
   background-color: red;
   color: white;
   padding: 3px 5px;
   border-radius: 3px;
   cursor: pointer;
+  width: 50px;
+}
+
+.account-delete-btn {
+  background-color: red;
+}
+
+.account-edit-btn {
+  background-color: #3282b8;
 }
 
 .account-matches {
@@ -93,7 +102,11 @@
   padding: 0 5px;
 }
 
-.account-add-match-form textarea {
+.input {
+  color: black;
+}
+
+textarea {
   width: 250px;
   padding: 5px;
   border: none;
