@@ -1,11 +1,12 @@
-import React, { useRef } from "react";
-import Axios from "axios";
-import DeleteConfirm from "../../../Modals/DeleteConfirm";
+import React, { useRef, useState } from "react";
+import DeleteConfirm from "../../../Modals/DeleteConfirm/DeleteConfirm";
 import "./Match.css";
+import EditModal from "../../../Modals/EditModal/EditModal";
 
 function Match(props) {
   const notesRef = useRef(null);
-  const modalRef = useRef(null);
+  const modalDeleteRef = useRef(null);
+  const modalEditRef = useRef(null);
 
   const months = [
     "Jan",
@@ -40,18 +41,38 @@ function Match(props) {
   };
 
   const onClickDeleteHandler = () => {
-    modalRef.current.style.display = "block";
+    modalDeleteRef.current.style.display = "block";
+  };
+
+  const onClickEditHandler = () => {
+    modalEditRef.current.style.display = "block";
   };
 
   return (
     <div className="match">
-      <div style={{ display: "none" }} ref={modalRef}>
+      <div style={{ display: "none" }} ref={modalDeleteRef}>
         <DeleteConfirm
           accountId={props.accountId}
           updateMatches={props.updateMatches}
           matchId={props.matchId}
           mode="match"
-          modalRef={modalRef}
+          modalRef={modalDeleteRef}
+        />
+      </div>
+      <div style={{ display: "none" }} ref={modalEditRef}>
+        <EditModal
+          matchId={props.matchId}
+          result={props.result}
+          champion={props.champion}
+          opponent={props.opponent}
+          lane={props.lane}
+          lp={props.lp}
+          notes={props.notes}
+          notes={props.notes}
+          updateMatches={props.updateMatches}
+          mode="match"
+          modalRef={modalEditRef}
+          key={[props.matchId]}
         />
       </div>
       <div className="match-box" onClick={onClickHandler}>
@@ -85,7 +106,16 @@ function Match(props) {
           </p>
         </div>
         <div className="match-btn-box">
-          <button className="match-delete-btn" onClick={onClickDeleteHandler}>
+          <button
+            className="match-btn match-edit-btn"
+            onClick={onClickEditHandler}
+          >
+            Edit
+          </button>
+          <button
+            className="match-btn match-delete-btn"
+            onClick={onClickDeleteHandler}
+          >
             Delete
           </button>
         </div>
