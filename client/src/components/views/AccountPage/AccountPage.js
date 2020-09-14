@@ -33,8 +33,13 @@ function AccountPage(props) {
     });
   }, []);
 
-  const updateMatches = (newMatches) => {
-    setMatches(newMatches);
+  const updateMatches = () => {
+    Axios.get(`/api/match/${props.match.params.accountId}`).then((response) => {
+      if (response.data.success) {
+        console.log(response.data.matches);
+        setMatches(response.data.matches);
+      }
+    });
   };
 
   const content = () => {
