@@ -56,6 +56,7 @@ function MatchForm(props) {
         <option value="Alistar">Alistar</option>
         <option value="Amumu">Amumu</option>
         <option value="Anivia">Anivia</option>
+        <option value="Annie">Annie</option>
         <option value="Aphelios">Aphelios</option>
         <option value="Ashe">Ashe</option>
         <option value="ASol">Aurelion Sol</option>
