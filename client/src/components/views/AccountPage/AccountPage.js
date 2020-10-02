@@ -6,10 +6,12 @@ import "./AccountPage.css";
 import Match from "./Sections/Match/Match";
 import MatchForm from "./Sections/MatchForm/MatchForm";
 import AccountInfo from "./Sections/AccountInfo/AccountInfo";
+import FilterBar from "./Sections/FilterBar/FilterBar";
 
 function AccountPage(props) {
   const [accountFound, setAccountFound] = useState(true);
   const [matches, setMatches] = useState([]);
+  const [allMatches, setAllMatches] = useState([]);
 
   useEffect(() => {
     Axios.get(`/api/account/${props.match.params.accountId}`).then(
@@ -29,6 +31,7 @@ function AccountPage(props) {
     Axios.get(`/api/match/${props.match.params.accountId}`).then((response) => {
       if (response.data.success) {
         setMatches(response.data.matches);
+        setAllMatches(response.data.matches);
       }
     });
   }, []);
@@ -36,14 +39,18 @@ function AccountPage(props) {
   const updateMatches = () => {
     Axios.get(`/api/match/${props.match.params.accountId}`).then((response) => {
       if (response.data.success) {
-        console.log(response.data.matches);
         setMatches(response.data.matches);
+        setAllMatches(response.data.matches);
       }
     });
   };
 
+  const filterMatches = (filtered) => {
+    setMatches(filtered);
+  };
+
   const content = () => {
-    if (accountFound) {
+    if (accountFound && matches.length > 0) {
       return (
         <div className="account-main">
           <AccountInfo
@@ -54,6 +61,11 @@ function AccountPage(props) {
             <MatchForm
               accountId={props.match.params.accountId}
               updateMatches={updateMatches}
+            />
+            <FilterBar
+              filterMatches={filterMatches}
+              matches={matches}
+              allMatches={allMatches}
             />
             <div className="account-matches-box">
               {matches.map((match, index) => {
@@ -78,7 +90,27 @@ function AccountPage(props) {
           </div>
         </div>
       );
-    } else {
+    } else if (accountFound) {
+      return (
+        <div className="account-main">
+          <AccountInfo accountId={props.match.params.accountId} />
+          <div className="account-matches">
+            <MatchForm
+              accountId={props.match.params.accountId}
+              updateMatches={updateMatches}
+            />
+            <FilterBar
+              filterMatches={filterMatches}
+              matches={matches}
+              allMatches={allMatches}
+            />
+            <div className="account-matches-box">
+              <h1 className="landing-heading">No matches found!</h1>;
+            </div>
+          </div>
+        </div>
+      );
+    } else if (!accountFound) {
       return <h1 className="landing-heading">Account not found!</h1>;
     }
   };
