@@ -50,7 +50,7 @@ function AccountPage(props) {
   };
 
   const content = () => {
-    if (accountFound && matches.length > 0) {
+    if (accountFound && allMatches.length > 0) {
       return (
         <div className="account-main">
           <AccountInfo
@@ -98,11 +98,6 @@ function AccountPage(props) {
             <MatchForm
               accountId={props.match.params.accountId}
               updateMatches={updateMatches}
-            />
-            <FilterBar
-              filterMatches={filterMatches}
-              matches={matches}
-              allMatches={allMatches}
             />
             <div className="account-matches-box">
               <h1 className="landing-heading">No matches found!</h1>;
