@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import Axios from "axios";
 import "./Sidebar.css";
 
@@ -20,25 +21,25 @@ function Sidebar(props) {
 
   return (
     <div className="sidebar" ref={sbRef} onClick={onClickHandler}>
-      <a
-        href="/add-account"
+      <Link
+        to="/add-account"
         className={`add-account-btn ${
           props.active === "add" ? "add-account-btn-active" : ""
         }`}
       >
         + New Account
-      </a>
+      </Link>
       {accounts.map((account, index) => {
         return (
-          <a
-            href={`/account/${account._id}`}
+          <Link
+            to={`/account/${account._id}`}
             className={`add-account-btn add-account-btn-acc ${
               props.active === account._id ? "add-account-btn-active" : ""
             }`}
             key={index}
           >
             {account.accountName}
-          </a>
+          </Link>
         );
       })}
     </div>
