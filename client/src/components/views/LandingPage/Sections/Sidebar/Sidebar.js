@@ -31,15 +31,15 @@ function Sidebar(props) {
       </Link>
       {accounts.map((account, index) => {
         return (
-          <a
-            href={`/account/${account._id}`}
+          <Link
+            to={`/account/${account._id}`}
             className={`add-account-btn add-account-btn-acc ${
               props.active === account._id ? "add-account-btn-active" : ""
             }`}
             key={index}
           >
             {account.accountName}
-          </a>
+          </Link>
         );
       })}
     </div>

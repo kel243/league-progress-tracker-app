@@ -34,7 +34,6 @@ function App() {
             component={Auth(AddAccountPage, true)}
           />
           <Route
-            exact
             path="/account/:accountId"
             component={Auth(AccountPage, true)}
           />

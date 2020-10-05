@@ -25,7 +25,7 @@ function AccountPage(props) {
         }
       }
     );
-  }, []);
+  }, [props.match.params.accountId]);
 
   useEffect(() => {
     Axios.get(`/api/match/${props.match.params.accountId}`).then((response) => {
@@ -34,7 +34,7 @@ function AccountPage(props) {
         setAllMatches(response.data.matches);
       }
     });
-  }, []);
+  }, [props.match.params.accountId]);
 
   const updateMatches = () => {
     Axios.get(`/api/match/${props.match.params.accountId}`).then((response) => {
